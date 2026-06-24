@@ -236,8 +236,8 @@ migration_tool/
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/dixitshubham93/data_migration_tool.git
-cd data_migration_tool
+git clone https://github.com/Harshi-max/Data_migration.git
+cd Data_migration
 
 # Backend
 cd backend && npm install
@@ -389,8 +389,3 @@ After a successful migration, the ER diagram is:
 
 ISC License — see [LICENSE](./LICENSE) for details.
 
----
-
-<div align="center">
-Built by <a href="https://github.com/dixitshubham93">Shubham Dixit</a>
-</div>
