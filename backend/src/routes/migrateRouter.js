@@ -9,6 +9,7 @@ import {
   getMigrationStatus,
   migrationProgress,
   erDiagram,
+  migrationReport,
   foreignKeys,
   applyFK,
 } from '../controllers/migrate.controller.js';
@@ -49,6 +50,7 @@ router.get('/progress/:migrationId',migrationProgress);   // SSE
 
 // ── ER Diagram (🟢 nice-to-have) ─────────────────────────────────────────────
 router.get('/:migrationId/er-diagram',   erDiagram);
+router.get('/:migrationId/report',       migrationReport);
 
 // ── Relationship Handling (Step 7) ────────────────────────────────────────────
 router.get('/:migrationId/foreign-keys', foreignKeys);

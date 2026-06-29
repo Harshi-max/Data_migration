@@ -2,14 +2,10 @@
 import dotenv from "dotenv";
 import { app } from "./App.js";
 
+dotenv.config({ path: "./.env" });
 
+const port = process.env.PORT || 3000;
 
-  const port = process.env.PORT;
-  
-  
-app.get("/", (req, res) => {
-  res.send("<h1>listening started</h1>");
+app.listen(port, () => {
+  console.log(`✅ Server is listening on port ${port}`);
 });
-  app.listen(port ,()=>{
-    console.log(`server is started listening on ${port}`)
-  });

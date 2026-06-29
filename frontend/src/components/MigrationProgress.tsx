@@ -297,10 +297,19 @@ export const MigrationProgress: React.FC<MigrationProgressProps> = ({
 
         {/* Actions */}
         {liveStatus === 'done' && (
-          <div className="mt-6 flex gap-3 justify-center">
+          <div className="mt-6 flex gap-3 justify-center flex-wrap">
             <button onClick={onReset} className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
               <RefreshCw className="w-4 h-4" /> New Migration
             </button>
+            {migrationId && (
+              <a
+                href={`${BASE_URL}/migrate/${migrationId}/report`}
+                download
+                className="bg-emerald-600 text-white px-6 py-2.5 rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2 cursor-pointer"
+              >
+                <Database className="w-4 h-4" /> Download Report
+              </a>
+            )}
           </div>
         )}
         {liveStatus === 'failed' && (

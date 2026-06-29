@@ -1,0 +1,48 @@
+{
+  "migrationId": "2068a276-65d1-4dc3-8927-c0de4e1b2aa8",
+  "status": "done",
+  "startedAt": "2026-06-29T11:48:53.352Z",
+  "completedAt": "2026-06-29T11:48:53.754Z",
+  "collections": {
+    "users": {
+      "status": "done",
+      "processedDocs": 5,
+      "totalDocs": 5,
+      "error": null
+    },
+    "records": {
+      "status": "done",
+      "processedDocs": 8,
+      "totalDocs": 8,
+      "error": null
+    }
+  },
+  "erDiagram": [
+    {
+      "table": "users",
+      "columns": {
+        "_id": "VARCHAR(24)",
+        "name": "VARCHAR(255)",
+        "email": "VARCHAR(255)",
+        "age": "INT",
+        "role": "VARCHAR(255)",
+        "balance": "DOUBLE",
+        "createdAt": "DATETIME"
+      },
+      "foreignKeys": []
+    },
+    {
+      "table": "records",
+      "columns": {
+        "_id": "VARCHAR(24)",
+        "userId": "VARCHAR(255)",
+        "type": "VARCHAR(255)",
+        "amount": "DOUBLE",
+        "description": "VARCHAR(255)",
+        "date": "DATETIME"
+      },
+      "foreignKeys": []
+    }
+  ],
+  "errors": []
+}

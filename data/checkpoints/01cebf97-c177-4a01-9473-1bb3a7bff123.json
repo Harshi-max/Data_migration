@@ -1,0 +1,22 @@
+{
+  "migrationId": "01cebf97-c177-4a01-9473-1bb3a7bff123",
+  "status": "done",
+  "startedAt": "2026-06-27T07:24:10.020Z",
+  "completedAt": "2026-06-27T07:24:10.157Z",
+  "collections": {
+    "users": {
+      "status": "done",
+      "processedDocs": 0,
+      "totalDocs": 0,
+      "error": null
+    },
+    "records": {
+      "status": "done",
+      "processedDocs": 0,
+      "totalDocs": 0,
+      "error": null
+    }
+  },
+  "erDiagram": [],
+  "errors": []
+}

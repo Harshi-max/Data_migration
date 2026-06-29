@@ -175,6 +175,67 @@ export const erDiagram = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse('success', 200, { erDiagram: diagram }));
 });
 
+// ── Migration Report (download) ───────────────────────────────────────────────
+
+/**
+ * GET /migrate/:migrationId/report
+ * Returns a full migration report as a downloadable JSON file.
+ */
+export const migrationReport = asyncHandler(async (req, res) => {
+  const { migrationId } = req.params;
+  const checkpoint = getCheckpoint(migrationId);
+  if (!checkpoint) throw new ApiError('Migration not found', 404);
+
+  const diagram = getErDiagram(migrationId) ?? [];
+  const fks = getDetectedForeignKeys(migrationId) ?? [];
+
+  const report = {
+    reportGeneratedAt: new Date().toISOString(),
+    migration: {
+      id: migrationId,
+      status: checkpoint.status,
+      startedAt: checkpoint.startedAt,
+      completedAt: checkpoint.completedAt,
+      source: { protocol: 'mongodb', database: checkpoint.database },
+      target: { protocol: 'mysql' },
+    },
+    summary: {
+      totalCollections: Object.keys(checkpoint.collections ?? {}).length,
+      successfulCollections: Object.values(checkpoint.collections ?? {}).filter(c => c.status === 'done').length,
+      failedCollections: Object.values(checkpoint.collections ?? {}).filter(c => c.status === 'failed').length,
+      totalDocumentsMigrated: Object.values(checkpoint.collections ?? {})
+        .reduce((sum, c) => sum + (c.processedDocs ?? 0), 0),
+    },
+    collections: Object.entries(checkpoint.collections ?? {}).map(([name, col]) => ({
+      name,
+      status: col.status,
+      documentsMigrated: col.processedDocs ?? 0,
+      totalDocuments: col.totalDocs ?? 0,
+      error: col.error ?? null,
+    })),
+    schema: diagram.map(table => ({
+      tableName: table.table,
+      columns: Object.entries(table.columns ?? {}).map(([col, type]) => ({
+        column: col,
+        sqlType: type,
+        primaryKey: col === '_id',
+      })),
+      foreignKeys: (table.foreignKeys ?? []).map(fk => ({
+        column: fk.column,
+        referencesTable: fk.refTable,
+        referencesColumn: '_id',
+      })),
+    })),
+    detectedForeignKeys: fks,
+    errors: checkpoint.errors ?? [],
+  };
+
+  const filename = `migration-report-${migrationId.slice(0, 8)}-${new Date().toISOString().slice(0, 10)}.json`;
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.setHeader('Content-Type', 'application/json');
+  return res.status(200).json(report);
+});
+
 // ── Foreign Keys ──────────────────────────────────────────────────────────────
 
 /**

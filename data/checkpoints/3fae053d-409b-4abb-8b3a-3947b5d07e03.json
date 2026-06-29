@@ -1,0 +1,25 @@
+{
+  "migrationId": "3fae053d-409b-4abb-8b3a-3947b5d07e03",
+  "status": "done",
+  "startedAt": "2026-06-29T11:55:39.439Z",
+  "completedAt": "2026-06-29T11:55:39.716Z",
+  "collections": {
+    "system.version": {
+      "status": "done",
+      "processedDocs": 1,
+      "totalDocs": 1,
+      "error": null
+    }
+  },
+  "erDiagram": [
+    {
+      "table": "system.version",
+      "columns": {
+        "_id": "VARCHAR(255)",
+        "version": "VARCHAR(255)"
+      },
+      "foreignKeys": []
+    }
+  ],
+  "errors": []
+}

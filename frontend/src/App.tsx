@@ -11,18 +11,18 @@ function App() {
 
   const [sourceConnection, setSourceConnection] = useState<DatabaseConnection>({
     protocol: 'mongodb',
-    username: 'root',
-    password: 'password',
-    host: 'localhost',
+    username: '',
+    password: '',
+    host: '127.0.0.1',
     port: 27017,
-    database: 'mongodatabase'
+    database: ''
   });
 
   const [targetConnection, setTargetConnection] = useState<DatabaseConnection>({
     protocol: 'mysql',
     username: 'root',
-    password: 'password',
-    host: 'localhost',
+    password: 'Admin1234!',
+    host: '127.0.0.1',
     port: 3306
   });
 
@@ -174,7 +174,8 @@ function App() {
     }
   }, [sourceStatus, targetStatus]);
 
-  const canPreview = sourceStatus === 'connected' && targetStatus === 'connected';
+  const canPreview = sourceStatus === 'connected' && targetStatus === 'connected' && !!sourceConnection.database;
+  const sourceConnectedNoDB = sourceStatus === 'connected' && !sourceConnection.database;
   const showMigrationSection = canPreview && (migrationStatus === 'ready' || migrationStatus === 'migrating' || migrationStatus === 'completed' || migrationStatus === 'error');
 
   return (
@@ -220,6 +221,17 @@ function App() {
               onToggleCollapse={() => setTargetCollapsed(!targetCollapsed)}
             />
           </div>
+
+          {/* Warning: connected but no DB selected yet */}
+          {sourceConnectedNoDB && (
+            <div className="p-4 bg-amber-50 border border-amber-300 rounded-xl text-amber-800 text-sm flex items-start gap-3">
+              <span className="text-xl">⚠️</span>
+              <div>
+                <p className="font-semibold">Select a database to continue</p>
+                <p className="text-amber-700 mt-0.5">MongoDB is connected. Scroll down in the <strong>Source Database</strong> panel and pick a database from the dropdown, then select your collections.</p>
+              </div>
+            </div>
+          )}
 
           {/* Preview Data Button */}
           {canPreview && !showPreview && migrationStatus === 'idle' && (
