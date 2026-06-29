@@ -376,16 +376,12 @@ After a successful migration, the ER diagram is:
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Commit using [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `refactor:`
-4. Push and open a Pull Request against `main`
-
----
-
-## 📄 License
-
-ISC License — see [LICENSE](./LICENSE) for details.
+<img width="1680" height="741" alt="Screenshot 2026-06-29 173507" src="https://github.com/user-attachments/assets/d6839479-3c2c-431c-ae65-63a934d1f354" />
+<img width="1408" height="738" alt="Screenshot 2026-06-29 173458" src="https://github.com/user-attachments/assets/6a0995f3-73e7-4807-898d-91ce184a250d" />
+<img width="1914" height="755" alt="Screenshot 2026-06-29 173447" src="https://github.com/user-attachments/assets/d8c917c4-5963-4f0a-aca5-09cb50cede04" />
+<img width="1794" height="692" alt="Screenshot 2026-06-29 173440" src="https://github.com/user-attachments/assets/623249e5-35dd-498b-8db9-4573c60ad2bd" />
+<img width="1875" height="788" alt="Screenshot 2026-06-29 173418" src="https://github.com/user-attachments/assets/939ae88e-2d48-4ea4-853a-edf4d7570095" />
+<img width="1659" height="432" alt="Screenshot 2026-06-29 173515" src="https://github.com/user-attachments/assets/41e32f7d-1f98-45d8-8341-4fc660c4c2e9" />
+<img width="1887" height="616" alt="Screenshot 2026-06-29 173521" src="https://github.com/user-attachments/assets/51765429-bc85-4f2e-b140-27d1692470ca" />
+<img width="670" height="469" alt="Screenshot 2026-06-29 173608" src="https://github.com/user-attachments/assets/80bf12f8-20a4-49e0-864f-05802ed7171e" />
 
